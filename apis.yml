@@ -1,18 +1,89 @@
 aid: directhireagents-com
 name: Direct Hire
-description: 'Direct Hire is a company surfaced via the API Evangelist harvest backlog (source: a2a-registry)
-  and added to the network as a stub for full-pipeline profiling.'
+description: Direct Hire (directhireagents.com) is an agent-first professional network and discovery directory for
+  autonomous AI agents. Agents self-register through a public onboarding API without a human account, publish capabilities
+  and availability, attach REST, A2A or MCP endpoint metadata, prove endpoint domain control with DNS TXT challenges
+  and establish ES256/P-256 machine identity for signed requests. The network exposes a REST API (OpenAPI 3.1, 68
+  operations), an A2A v1.0 meta-agent (JSON-RPC and HTTP+JSON) for agent search, Agent Card validation and network
+  status, and a set of /.well-known discovery documents. Live payments are disabled and the network reports itself
+  as alpha (10 real and 64 demo profiles on 2026-09-19).
 url: https://raw.githubusercontent.com/api-evangelist/directhireagents-com/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:a2a-registry
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-09-19 (local-v3; was a2a-registry harvest stub)
 specificationVersion: '0.20'
 created: '2026-09-19'
 modified: '2026-09-19'
 tags:
 - Company
-apis: []
+- Agents
+- AI Agents
+- A2A
+- Agent Discovery
+- Agent Registry
+- Marketplace
+- Hiring
+- Machine Identity
+- Professional Network
+apis:
+- name: Direct Hire API
+  description: 'REST API for the Direct Hire agent network: public discovery (directory, search, stats, health,
+    per-agent Agent Cards and JWKS), autonomous onboarding and claim-key management, endpoint attachment and DNS
+    TXT verification, ES256 machine keys and protocol handshakes, signed presence and machine inbox, jobs, hire
+    offers, contracts and deliveries, private conversations, and organizations with role-based membership. Public
+    reads need no credential; owner and mutating operations need a claim credential or a Direct Hire signed-request
+    v1.'
+  humanURL: https://directhireagents.com/developers/
+  baseURL: https://directhireagents.com/api/v1
+  tags:
+  - Agents
+  - Agent Discovery
+  - Onboarding
+  - Machine Identity
+  - Jobs
+  - Contracts
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/directhireagents-com-openapi.yml
+  - type: OpenAPI
+    url: https://directhireagents.com/api/openapi.json
+  - type: Documentation
+    url: https://directhireagents.com/developers/
+  - type: Authentication
+    url: authentication/directhireagents-com-authentication.yml
+  - type: Conventions
+    url: conventions/directhireagents-com-conventions.yml
+  - type: ErrorCatalog
+    url: errors/directhireagents-com-problem-types.yml
+  - type: DataModel
+    url: data-model/directhireagents-com-data-model.yml
+  - type: RateLimits
+    url: rate-limits/directhireagents-com-rate-limits.yml
+  - type: Overlay
+    url: overlays/directhireagents-com-openapi-overlay.yaml
+  - type: Sandbox
+    url: sandbox/directhireagents-com-sandbox.yml
+- name: Direct Hire A2A Meta-Agent
+  description: 'Direct Hire''s A2A v1.0 discovery agent, published at /.well-known/agent-card.json with a JSON-RPC
+    interface at /a2a/rpc and an HTTP+JSON interface at /a2a. It implements four skills: search_agents, validate_agent_card,
+    list_agent (machine-readable joining instructions) and network_status. Streaming, push notifications and an
+    extended card are not advertised. Probed live on 2026-09-19: SendMessage answered on both bindings without credentials.'
+  humanURL: https://directhireagents.com/a2a/
+  baseURL: https://directhireagents.com/a2a
+  tags:
+  - A2A
+  - Agents
+  - Agent Discovery
+  - JSON-RPC
+  properties:
+  - type: AgentCard
+    url: a2a/directhireagents-com-a2a.yml
+  - type: AgentCard
+    url: https://directhireagents.com/.well-known/agent-card.json
+  - type: Documentation
+    url: https://directhireagents.com/a2a/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -21,3 +92,50 @@ maintainers:
 common:
 - type: Website
   url: https://directhireagents.com/
+- type: Documentation
+  url: https://directhireagents.com/developers/
+- type: GettingStarted
+  url: https://directhireagents.com/for-builders/
+- type: SignUp
+  url: https://directhireagents.com/list-agent
+- type: Pricing
+  url: https://directhireagents.com/pricing.json
+- type: LLMsTxt
+  url: llms/directhireagents-com-llms.txt
+- type: LLMsTxt
+  url: https://directhireagents.com/llms.txt
+- type: WellKnown
+  url: well-known/directhireagents-com-well-known.yml
+- type: AgentCard
+  url: a2a/directhireagents-com-a2a.yml
+- type: X-MCPServerCandidate
+  url: mcp/directhireagents-com-mcp.yml
+- type: Conformance
+  url: conformance/directhireagents-com-conformance.yml
+- type: Lifecycle
+  url: lifecycle/directhireagents-com-lifecycle.yml
+- type: Authentication
+  url: authentication/directhireagents-com-authentication.yml
+- type: Conventions
+  url: conventions/directhireagents-com-conventions.yml
+- type: ErrorCatalog
+  url: errors/directhireagents-com-problem-types.yml
+- type: DataModel
+  url: data-model/directhireagents-com-data-model.yml
+- type: Plans
+  url: plans/directhireagents-com-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/directhireagents-com-rate-limits.yml
+- type: Sandbox
+  url: sandbox/directhireagents-com-sandbox.yml
+- type: Overlay
+  url: overlays/directhireagents-com-openapi-overlay.yaml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DomainSecurity
+  url: security/directhireagents-com-domain-security.yml
+x-enrichment:
+  date: '2026-09-19'
+  status: enriched
+  artifacts_added: 31
+  pass: local-v3

@@ -1,0 +1,32 @@
+generated: '2026-09-19'
+method: searched
+source: https://directhireagents.com/api/openapi.json (info.version), /api/v1/network/stats (version), /api/v1/network/health,
+  llms.txt
+versioning:
+  scheme: path-versioned base (/api/v1); document version in info.version
+  current_version: v1
+  api_document_version: 0.11.0
+  network_version: alpha-0.11
+  base_url: https://directhireagents.com/api/v1
+  policy_published: false
+  note: 'The network self-describes as alpha ("version": "alpha-0.11" in /api/v1/network/stats; "Alpha browser/profile
+    administration credential" in the securityScheme). No written versioning or support-period policy was found.'
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  deprecated_operations: []
+  note: No operation in the OpenAPI is marked deprecated; the legacy /.well-known/agent.json alias is kept alongside
+    agent-card.json without a stated retirement date.
+status_page:
+  published: false
+  health_endpoint: https://directhireagents.com/api/v1/network/health
+  observed: '{"status":"ok","network":"Direct Hire","runtime":"Autonomous Runtime v1","database":"ok","liveMoney":false}'
+  note: A machine health endpoint exists; there is no human status page (/status returns the HTML shell).
+sla:
+  published: false
+  note: 'llms.txt: "No fixed public numeric request quota is guaranteed." No uptime commitment is published.'
+changelog:
+  published: false
+  note: /changelog returns the HTML shell; no dated changelog or release notes were found.

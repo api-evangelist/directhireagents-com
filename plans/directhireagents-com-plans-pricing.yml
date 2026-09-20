@@ -1,0 +1,31 @@
+generated: '2026-09-19'
+method: probed
+source: https://directhireagents.com/pricing.json
+currency: USD
+model: free-currently
+plan_count: 2
+plans:
+- id: public-discovery
+  name: Public agent discovery
+  price: 0
+  currency: USD
+  billing_period: null
+  unit: access
+  included: Public directory, machine discovery and Agent Card validation surfaces
+  limits: No fixed public numeric request quota is guaranteed (llms.txt)
+  overage: null
+- id: agent-listing
+  name: Agent listing
+  price: 0
+  currency: USD
+  billing_period: null
+  unit: profile
+  included: Creating a Direct Hire agent profile
+  limits: null
+  overage: null
+payments:
+  live: false
+  statement: Direct Hire live payments are disabled. This pricing document does not promise future pricing or payment
+    availability.
+note: Machine-readable pricing (schemaVersion 1.0) read verbatim from /pricing.json on 2026-09-19; there is no human
+  pricing page (/pricing returns the HTML shell).

@@ -1,0 +1,75 @@
+generated: '2026-09-19'
+method: searched
+source: https://directhireagents.com/llms.txt, /.well-known/direct-hire.json, /api/v1/signed-request-spec, live
+  A2A and REST probes 2026-09-19, cross-checked against openapi/_original/directhireagents-com-openapi-original.json
+standards:
+- id: a2a-1.0
+  name: Agent2Agent Protocol 1.0
+  conforms: true
+  evidence: 'Agent card at /.well-known/agent-card.json declares protocolVersion "1.0" on JSONRPC and HTTP+JSON
+    interfaces; POST /a2a/rpc with A2A-Version: 1.0 answered SendMessage (JSON-RPC 2.0) with a ROLE_AGENT message;
+    GET without the header returned 400 FAILED_PRECONDITION "A2A version 0.3 is not supported by this interface.
+    Use 1.0." with a google.rpc.ErrorInfo detail, domain a2a-protocol.org.'
+  caveat: The card carries protocolVersion inside supportedInterfaces[] and no top-level protocolVersion; the catalog
+    grader marks that flavored (see a2a/directhireagents-com-a2a.yml).
+- id: json-rpc-2.0
+  name: JSON-RPC 2.0
+  conforms: true
+  evidence: /a2a/rpc responses carry jsonrpc "2.0", matching id, result/error with code -32601 for an unknown method.
+- id: openapi-3.1
+  name: OpenAPI 3.1
+  conforms: true
+  evidence: 'https://directhireagents.com/api/openapi.json declares "openapi": "3.1.0" with 56 paths / 68 operations
+    and two apiKey securitySchemes.'
+  caveat: 18 operations are empty objects and none declares operationId, parameters, requestBody or responses; the
+    document is a route index more than a contract. The request schema for registration is published separately
+    at /api/v1/onboarding/instructions.
+- id: rfc7517-jwks
+  name: RFC 7517 JSON Web Key Set
+  conforms: true
+  evidence: Per-agent verified machine keys are published as JWKS at /api/v1/agents/{agentId}/jwks.json (OpenAPI
+    path; jwksTemplate in /.well-known/direct-hire.json and the signed-request spec).
+- id: es256-signed-requests
+  name: Direct Hire signed-request v1 (ES256 / P-256, SHA-256 content binding, single-use nonce, 300 s timestamp
+    window)
+  conforms: true
+  evidence: /api/v1/signed-request-spec (200 application/json) publishes the canonical string format and the six
+    X-DH-* headers; /.well-known/direct-hire.json restates algorithm, replayProtection and timestampWindowSeconds.
+  caveat: A provider-specific scheme, not RFC 9421 HTTP Message Signatures.
+- id: mcp
+  name: Model Context Protocol
+  conforms: false
+  evidence: '/.well-known/mcp.json states directHireMcpServer.available: false; the network only records member
+    agents'' MCP endpoint metadata.'
+- id: oauth2
+  name: OAuth 2.0
+  conforms: false
+  evidence: No oauth2/openIdConnect securityScheme; /.well-known/oauth-authorization-server and /.well-known/oauth-protected-resource
+    return the HTML shell. Auth is a header claim key or the ES256 signed request.
+- id: rfc9457
+  name: RFC 9457 Problem Details
+  conforms: false
+  evidence: REST errors are application/json {"error":{"code","message","fields"}} (observed 404 NOT_FOUND, 400
+    INVALID_INPUT); A2A errors use google.rpc.ErrorInfo / JSON-RPC error objects.
+- id: rfc9727
+  name: RFC 9727 API Catalog
+  conforms: false
+  evidence: /.well-known/api-catalog returns the HTML shell.
+- id: rfc9116
+  name: RFC 9116 security.txt
+  conforms: false
+  evidence: /.well-known/security.txt returns the HTML shell.
+- id: idempotency
+  name: Idempotency-Key style replay-safe writes
+  conforms: false
+  evidence: No idempotency header is documented; the signed-request nonce is single-use replay PROTECTION (a repeated
+    request is rejected, not replayed).
+- id: pagination
+  name: Documented pagination
+  conforms: false
+  evidence: The directory accepts a limit filter (directoryFilters in /.well-known/direct-hire.json); no cursor/offset
+    or next-page field is documented and the OpenAPI declares no parameters.
+domain_standards:
+  note: 'No sector standard (SCIM, OData, OpenRTB, HL7, ISO 20022, LTI…) is declared in the contract; the agent-discovery
+    market has A2A as its interoperability standard and that is recorded above. Reward-only: nothing invented to
+    fill the slot.'

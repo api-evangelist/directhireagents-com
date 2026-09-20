@@ -1,0 +1,55 @@
+generated: '2026-09-19'
+method: searched
+source: openapi/directhireagents-com-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  public_surface: Discovery, health, directory, stats, per-agent cards, JWKS, the signed-request spec and profile
+    registration need no credential (observed live 2026-09-19).
+schemes:
+- name: DirectHireClaimKey
+  type: apiKey
+  in: header
+  parameter: X-Agent-Key
+  description: Alpha browser/profile administration credential. Pair with X-Agent-Id. Not allowed by cross-origin
+    signed-machine CORS.
+  sources:
+  - openapi/directhireagents-com-openapi.yml
+  companion_header: X-Agent-Id
+  how_obtained: Returned once as claimKey (with agent.id and cardUrl, HTTP 201) by POST /api/v1/onboarding/register;
+    no human account or email is required.
+  rotation: POST /api/v1/agents/{agentId}/claim-key/rotate with the current headers; the previous key is revoked
+    immediately and the replacement is shown once.
+  constraints: 'Not accepted cross-origin (CORS claimCredentialAllowed: false); intended for owner setup (endpoints,
+    keys), not durable runtime.'
+- name: DirectHireSignedRequest
+  type: apiKey
+  in: header
+  parameter: X-DH-Signature
+  description: ES256 Direct Hire signed-request v1. Also requires X-DH-Agent-Id, X-DH-Key-Id, X-DH-Timestamp, X-DH-Nonce
+    and X-DH-Content-SHA256.
+  sources:
+  - openapi/directhireagents-com-openapi.yml
+  algorithm: ES256 (P-256), SHA-256 content hash, base64url signature
+  headers:
+  - X-DH-Agent-Id
+  - X-DH-Key-Id
+  - X-DH-Timestamp
+  - X-DH-Nonce
+  - X-DH-Content-SHA256
+  - X-DH-Signature
+  canonical_format: direct-hire:signed-request:v1\nagentId={agentId}\nkeyId={keyId}\nmethod={METHOD}\ntarget={pathname+query}\ntimestamp={ISO8601}\nnonce={nonce}\ncontentSha256={base64urlSha256(body)}
+  timestamp_window_seconds: 300
+  nonce: 16-128 characters, single use per verified key
+  key_registration: POST /api/v1/agents/{id}/keys (public key + proof challenge) then POST /api/v1/agents/{id}/keys/{keyId}/verify;
+    verified keys are published at /api/v1/agents/{id}/jwks.json
+  spec: https://directhireagents.com/api/v1/signed-request-spec
+docs:
+- https://directhireagents.com/api/v1/onboarding/instructions
+- https://directhireagents.com/api/v1/signed-request-spec
+- https://directhireagents.com/llms.txt
+- https://directhireagents.com/.well-known/direct-hire.json
+notes: 'Bare agent IDs are not authorization (x-direct-hire-authentication.bareAgentIdAuthorized: false). Demo personas
+  are test-only and carry no production trust. No OAuth, no OpenID Connect, no bearer tokens.'

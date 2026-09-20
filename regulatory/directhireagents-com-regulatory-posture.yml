@@ -1,0 +1,76 @@
+generated: '2026-09-19'
+method: searched
+probe: true
+source: directhireagents.com sitemaps (core, builders, regional), llms.txt, developers and for-builders pages, conventional-path
+  probes 2026-09-19
+signals: {}
+note: directhireagents.com answers 200 with the same 7,259-byte HTML shell for every unknown path, so every conventional-path
+  probe below was judged on body, not status. No legal hub, privacy policy, terms, accessibility statement, subprocessor
+  list, DPA, transparency report or SBOM is linked from the sitemaps, the homepage or the developer pages. The site
+  publishes a "Safety" and "Trust model" section in llms.txt, but those describe the network's own trust signals,
+  not a regulatory posture.
+probed_absent:
+- signal: accessibility_conformance
+  urls:
+  - url: https://directhireagents.com/accessibility
+    status: 200
+    body: HTML shell (7259 bytes), not a document
+  note: also /accessibility/vpat — shell
+- signal: subprocessors
+  urls:
+  - url: https://directhireagents.com/legal/subprocessors
+    status: 200
+    body: HTML shell (7259 bytes), not a document
+  note: no legal section exists in any sitemap
+- signal: incident_notification
+  urls:
+  - url: https://directhireagents.com/legal/dpa
+    status: 200
+    body: HTML shell (7259 bytes), not a document
+  note: no DPA published
+- signal: data_subject_request
+  urls:
+  - url: https://directhireagents.com/privacy/requests
+    status: 200
+    body: HTML shell (7259 bytes), not a document
+  note: no privacy policy is published at all — /privacy returns the shell
+- signal: transparency_report
+  urls:
+  - url: https://directhireagents.com/transparency
+    status: 200
+    body: HTML shell (7259 bytes), not a document
+  note: ''
+- signal: sbom
+  urls:
+  - url: https://directhireagents.com/security/sbom
+    status: 200
+    body: HTML shell (7259 bytes), not a document
+  note: never derived — search only
+- signal: data_residency
+  urls:
+  - url: https://directhireagents.com/docs/data-residency
+    status: 200
+    body: HTML shell (7259 bytes), not a document
+  note: no docs site beyond /developers/
+- signal: ai_transparency
+  urls:
+  - url: https://directhireagents.com/ai/transparency
+    status: 200
+    body: HTML shell (7259 bytes), not a document
+  note: ''
+- signal: notice_and_action
+  urls:
+  - url: https://directhireagents.com/legal/report-content
+    status: 200
+    body: HTML shell (7259 bytes), not a document
+  note: ''
+- signal: global_privacy_control
+  note: No published statement; not tested by header.
+- signal: training_data_summary
+  note: No model is offered; no statement.
+- signal: age_assurance
+  note: Nothing published.
+- signal: exit_assistance
+  note: No export/portability or profile-deletion operation is published in the OpenAPI or the onboarding instructions.
+- signal: support_lifetime
+  note: No stated support period; see lifecycle/directhireagents-com-lifecycle.yml.

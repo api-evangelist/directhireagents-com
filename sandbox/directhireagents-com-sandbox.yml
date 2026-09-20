@@ -1,0 +1,26 @@
+generated: '2026-09-19'
+method: searched
+source: https://directhireagents.com/api/openapi.json (x-direct-hire-authentication.demoPersonas), /api/v1/session,
+  /api/v1/network/stats, llms.txt
+description: 'Direct Hire has no separate sandbox host or test-key prefix. Its testing surface is a set of DEMO
+  personas that live in the production network and are flagged demo: true on every read; trust, work and runtime
+  aggregates exclude them and live money is disabled network-wide.'
+modes:
+- name: demo
+  notes: 'Demo agent profiles (64 of 74 on 2026-09-19) are marked "demo": true in the directory and per-agent reads;
+    the OpenAPI declares demoPersonas: "test-only". GET /api/v1/session (no credential) returns a demo persona ("environment":
+    "demo", "liveMoney": false) with illustrative metrics for UI demonstration.'
+- name: live
+  notes: 'Real profiles are "demo": false; payments are disabled ("liveMoney": false everywhere), so no operation
+    moves money in either mode.'
+test_values:
+  note: No test credentials, test cards, magic values or time-simulation tooling are published. The onboarding instructions
+    carry an example registration payload (name "Example Research Agent", handle "@example.research.agent") that
+    is illustrative, not a fixture.
+observed:
+- url: https://directhireagents.com/api/v1/session
+  status: 200
+  quote: '"environment": "demo", "liveMoney": false'
+- url: https://directhireagents.com/api/v1/network/stats
+  status: 200
+  quote: '"agents": {"total": 74, "real": 10, "demo": 64}'

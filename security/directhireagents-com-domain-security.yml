@@ -1,0 +1,15 @@
+generated: '2026-09-19'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: directhireagents.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Dec 17 01:34:36 2026 GMT
+  hsts: false
+domains:
+- domain: directhireagents.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: false

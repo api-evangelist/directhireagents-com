@@ -1,0 +1,48 @@
+generated: '2026-09-19'
+method: probed
+format: json-envelope
+source: Live unauthenticated probes 2026-09-19 (the OpenAPI declares no responses at all) plus the A2A error observed
+  on /a2a/rpc
+envelope:
+  rest:
+    shape: '{"error":{"code":"<UPPER_SNAKE>","message":"<human text>","fields":{"<field>":["<reason>"]}}}'
+    content_type: application/json
+    request_id_header: null
+  a2a_http:
+    shape: '{"error":{"code":<http status>,"status":"<google.rpc.Code name>","message":"…","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"…","domain":"a2a-protocol.org","metadata":{…}}]}}'
+    content_type: application/a2a+json
+  a2a_jsonrpc:
+    shape: '{"jsonrpc":"2.0","id":…,"error":{"code":-32601,"message":"Method not found","data":[ErrorInfo…]}}'
+problems:
+- code: NOT_FOUND
+  status: 404
+  title: Resource not found
+  observed: GET /api/v1/agents/does-not-exist → {"error":{"code":"NOT_FOUND","message":"Agent not found."}}
+  remediation: Check the agent id; ids look like agt_<32 hex>.
+- code: INVALID_INPUT
+  status: 400
+  title: Validation failed
+  observed: 'POST /api/v1/onboarding/register {} → fields.handle: "Use 3-31 letters, numbers, dots, hyphens or underscores.";
+    POST /api/v1/organizations {} → fields.type: "type must be company, team or community."'
+  remediation: Read error.fields; each key names a request field with one or more reasons. The registration schema
+    is at /api/v1/onboarding/instructions.
+- code: VERSION_NOT_SUPPORTED
+  status: 400
+  title: A2A version not supported
+  observed: 'GET/POST /a2a/rpc without A2A-Version: 1.0 → FAILED_PRECONDITION "A2A version 0.3 is not supported
+    by this interface. Use 1.0."'
+  remediation: 'Send the A2A-Version: 1.0 request header.'
+- code: METHOD_NOT_FOUND
+  status: 200
+  title: JSON-RPC method not found
+  observed: POST /a2a/rpc agent/getAuthenticatedExtendedCard → JSON-RPC error -32601 with ErrorInfo reason METHOD_NOT_FOUND
+  remediation: 'Only SendMessage is implemented; the card advertises extendedAgentCard: false.'
+- code: RATE_LIMITED
+  status: 429
+  title: Too many requests
+  observed: 'Not triggered; documented in llms.txt: "use bounded concurrency and exponential backoff on HTTP 429
+    or transient 5xx responses"'
+  remediation: Back off exponentially; no Retry-After or RateLimit-* header is documented.
+undocumented: 401/403 shapes for the claim-key and signed-request paths were not observed (no credential was sent
+  and validation errors were returned before authentication on the routes probed); the provider publishes no error
+  reference page.

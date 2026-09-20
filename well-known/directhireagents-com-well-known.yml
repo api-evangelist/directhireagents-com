@@ -1,0 +1,85 @@
+generated: '2026-09-19'
+method: probed
+source: live GET of each path on 2026-09-19 with a browser User-Agent
+note: directhireagents.com answers 200 with its HTML shell for every unknown path, so status alone proves nothing
+  here; each entry was judged on content type and body. The six standard discovery documents (security.txt, openid-configuration,
+  oauth-authorization-server, oauth-protected-resource, api-catalog, ai-plugin.json) are NOT served. What IS served
+  is an A2A agent card plus seven provider-defined JSON discovery documents that the site's llms.txt and robots.txt
+  both advertise. www.directhireagents.com 308-redirects to the apex. The provider hosts no MCP server, so there
+  is no MCP host to probe; the OpenAPI server and the A2A interfaces live on the apex.
+hosts:
+- host: directhireagents.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    note: 200 with the 7,259-byte HTML shell of the site (SPA catch-all); not a document — treated as a miss
+  - path: /.well-known/openid-configuration
+    status: 200
+    note: 200 with the 7,259-byte HTML shell of the site (SPA catch-all); not a document — treated as a miss
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    note: 200 with the 7,259-byte HTML shell of the site (SPA catch-all); not a document — treated as a miss
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    note: 200 with the 7,259-byte HTML shell of the site (SPA catch-all); not a document — treated as a miss
+  - path: /.well-known/api-catalog
+    status: 200
+    note: 200 with the 7,259-byte HTML shell of the site (SPA catch-all); not a document — treated as a miss
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    note: 200 with the 7,259-byte HTML shell of the site (SPA catch-all); not a document — treated as a miss
+  - path: /.well-known/agent-card.json
+    status: 200
+    file: well-known/directhireagents-com-agent-card.json
+    content_type: application/json
+    bytes: 3456
+    note: A2A v1.0 Agent Card — real document; graded in a2a/directhireagents-com-a2a.yml
+  - path: /.well-known/agent.json
+    status: 200
+    content_type: application/json
+    bytes: 3456
+    note: byte-identical to agent-card.json (legacy alias per the provider's llms.txt); not saved twice
+  - path: /.well-known/agents.json
+    status: 200
+    file: well-known/directhireagents-com-agents.json
+    content_type: application/json
+    bytes: 2
+    note: Multi-agent manifest of verified member A2A endpoints; empty array on the probe date
+  - path: /.well-known/mcp.json
+    status: 200
+    file: well-known/directhireagents-com-mcp.json
+    content_type: application/json
+    bytes: 3600
+    note: 'Provider-defined "direct-hire.mcp-discovery" metadata; states directHireMcpServer.available: false'
+  - path: /.well-known/ai-agent.json
+    status: 200
+    file: well-known/directhireagents-com-ai-agent.json
+    content_type: application/json
+    bytes: 8987
+    note: Provider-defined agent manifest with capability input/output JSON Schemas
+  - path: /.well-known/direct-hire.json
+    status: 200
+    file: well-known/directhireagents-com-direct-hire.json
+    content_type: application/json
+    bytes: 4191
+    note: 'Network discovery document: apiBase, openApi, onboarding, signed-request and verification metadata'
+  - path: /.well-known/agent-acquisition.json
+    status: 200
+    file: well-known/directhireagents-com-agent-acquisition.json
+    content_type: application/json
+    bytes: 4868
+  - path: /.well-known/agent-growth.json
+    status: 200
+    file: well-known/directhireagents-com-agent-growth.json
+    content_type: application/json
+    bytes: 5757
+  - path: /.well-known/agent-runtime-kit.json
+    status: 200
+    file: well-known/directhireagents-com-agent-runtime-kit.json
+    content_type: application/json
+    bytes: 5086
+- host: www.directhireagents.com
+  documents:
+  - path: /
+    status: 308
+    note: redirects to https://directhireagents.com/ — not probed separately

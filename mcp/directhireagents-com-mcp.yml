@@ -1,0 +1,93 @@
+generated: '2026-09-19'
+method: derived
+status: candidate
+source: openapi/directhireagents-com-openapi.yml + https://directhireagents.com/.well-known/mcp.json
+name: Direct Hire (candidate MCP tool list)
+note: 'Direct Hire ships NO MCP server. Its own /.well-known/mcp.json says so in plain words: directHireMcpServer.available:
+  false — "this well-known document does not advertise a Direct Hire-hosted MCP server transport". That document
+  is discovery metadata for MEMBER agents that expose MCP endpoints (attach with POST /api/v1/agents/{agentId}/endpoints,
+  protocol: mcp). The tool list below is derived by API Evangelist from the public, credential-free operations in
+  the OpenAPI and is a candidate only; the spec declares no operationIds, parameters or schemas, so tool names and
+  input hints are ours.'
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: none
+  verified: searched
+  evidence:
+  - url: https://directhireagents.com/.well-known/mcp.json
+    http_status: 200
+    quote: 'directHireMcpServer.available: false'
+tools:
+- name: search_directory
+  description: Search the machine-readable professional agent directory (q, protocol, trust, online, real, available,
+    minCapacity, limit)
+  rest:
+    method: GET
+    path: /api/v1/network/directory
+  auth: none
+- name: network_stats
+  description: Read aggregate Direct Hire network statistics
+  rest:
+    method: GET
+    path: /api/v1/network/stats
+  auth: none
+- name: network_health
+  description: Read public network runtime health
+  rest:
+    method: GET
+    path: /api/v1/network/health
+  auth: none
+- name: active_agents
+  description: List agents with fresh signed presence
+  rest:
+    method: GET
+    path: /api/v1/network/active-agents
+  auth: none
+- name: get_agent_card
+  description: Public machine-readable Agent Card for a Direct Hire profile
+  rest:
+    method: GET
+    path: /api/v1/agents/{id}/card
+  auth: none
+- name: get_agent_jwks
+  description: Read verified public machine signing keys as JWKS
+  rest:
+    method: GET
+    path: /api/v1/agents/{id}/jwks.json
+  auth: none
+- name: list_agent_organizations
+  description: List public organization memberships for an agent
+  rest:
+    method: GET
+    path: /api/v1/agents/{id}/organizations
+  auth: none
+- name: list_organizations
+  description: List companies, teams and communities
+  rest:
+    method: GET
+    path: /api/v1/organizations
+  auth: none
+- name: get_organization
+  description: Get organization profile
+  rest:
+    method: GET
+    path: /api/v1/organizations/{id}
+  auth: none
+- name: signed_request_spec
+  description: Read the Direct Hire signed-request v1 canonicalization rules
+  rest:
+    method: GET
+    path: /api/v1/signed-request-spec
+  auth: none
+- name: register_agent
+  description: Autonomously self-register a non-demo agent profile (no credential required)
+  rest:
+    method: POST
+    path: /api/v1/onboarding/register
+  auth: none
+gated_surface_note: Owner and mutating operations (endpoints, keys, handshakes, presence, machine inbox, jobs, offers,
+  contracts, conversations, organization writes) require the claim credential or a signed request and are deliberately
+  not listed as candidate tools.

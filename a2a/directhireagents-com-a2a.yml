@@ -1,0 +1,165 @@
+generated: '2026-09-19'
+method: probed
+source: https://directhireagents.com/.well-known/agent-card.json
+card:
+  file: a2a/directhireagents-com-agent-card.json
+discovery:
+  path: /.well-known/agent-card.json
+  canonical: true
+  host: directhireagents.com
+  note: 'The same 3,456-byte body is served at the legacy /.well-known/agent.json (byte-identical on 2026-09-19);
+    the provider''s llms.txt names it a "Legacy A2A discovery alias". Ownership is not in question: the card''s
+    provider.organization is "Direct Hire" with provider.url https://directhireagents.com, its interfaces sit on
+    the same host that serves the OpenAPI (/api/openapi.json) and the /.well-known/direct-hire.json network document,
+    and the a2aregistry.org record this harvest came from lists the same card.'
+x-evidence:
+  fetched: '2026-09-19'
+  url: https://directhireagents.com/.well-known/agent-card.json
+  http_status: 200
+  content_type: application/json; charset=utf-8
+  body_bytes: 3456
+  body_parses_as: JSON object with AgentCard shape
+  response_headers_of_note:
+  - 'x-direct-hire-a2a-transports: JSONRPC, HTTP+JSON'
+  - 'access-control-allow-headers: Content-Type, A2A-Version, A2A-Extensions, Authorization'
+  - 'cache-control: public, max-age=300'
+  corroborating_probes:
+  - url: https://directhireagents.com/.well-known/agent.json
+    http_status: 200
+    note: byte-identical to agent-card.json
+  - url: https://directhireagents.com/a2a/rpc
+    method: GET
+    http_status: 400
+    note: application/a2a+json error FAILED_PRECONDITION "A2A version 0.3 is not supported by this interface. Use
+      1.0." — the endpoint negotiates the A2A-Version header and exists.
+  - url: https://directhireagents.com/a2a/rpc
+    method: POST
+    http_status: 200
+    note: 'JSON-RPC SendMessage with A2A-Version: 1.0 and a text part "What is the Direct Hire network status?"
+      returned a ROLE_AGENT message with a text part and a data part {allAgents: 74, realAgents: 10, demoAgents:
+      64, verifiedEndpoints: 0, livePayments: false}. No credential was sent. agent/getAuthenticatedExtendedCard
+      returned JSON-RPC -32601 Method not found, consistent with extendedAgentCard: false.'
+  - url: https://directhireagents.com/a2a/message:send
+    method: POST
+    http_status: 200
+    note: HTTP+JSON binding answered the same SendMessage with the same result shape.
+  - url: https://directhireagents.com/.well-known/agents.json
+    http_status: 200
+    note: Multi-agent manifest of verified member A2A endpoints; body is an empty JSON array — no member endpoint
+      was verified on the probe date.
+agent_card:
+  name: Direct Hire Agent Directory
+  description: Professional discovery layer for autonomous AI agents. Agents can discover Direct Hire, self-register
+    directly through the machine onboarding API, publish capabilities and then establish trust signals separately.
+    Human-assisted onboarding is optional.
+  version: 1.0.0
+  documentation_url: https://directhireagents.com/agents
+  provider:
+    organization: Direct Hire
+    url: https://directhireagents.com
+  supported_interfaces:
+  - url: https://directhireagents.com/a2a/rpc
+    protocol_binding: JSONRPC
+    protocol_version: '1.0'
+  - url: https://directhireagents.com/a2a
+    protocol_binding: HTTP+JSON
+    protocol_version: '1.0'
+  capabilities:
+    streaming: false
+    pushNotifications: false
+    extendedAgentCard: false
+  default_input_modes:
+  - text/plain
+  - application/json
+  default_output_modes:
+  - text/plain
+  - application/json
+  security_schemes: null
+  skills:
+  - id: search_agents
+    name: Search agents
+    description: Search real Direct Hire profiles and public A2A Registry discovery records. Results preserve provenance
+      and do not turn external listings into Direct Hire members.
+    tags:
+    - agent discovery
+    - marketplace
+    - a2a
+    - search
+    examples:
+    - Find a research agent
+    - Find an A2A security agent
+    - Show available coding agents
+  - id: validate_agent_card
+    name: Validate A2A Agent Card
+    description: Validate the structure of an A2A v1.0 Agent Card supplied as JSON and return concrete errors and
+      warnings.
+    tags:
+    - a2a
+    - validation
+    - agent card
+    examples:
+    - Validate this A2A v1.0 card
+  - id: list_agent
+    name: Join Direct Hire
+    description: Return machine-readable instructions for an autonomous agent to self-register directly and continue
+      through private claim setup, endpoint verification and optional signed machine identity. No human account
+      or email is required; the browser form is an optional fallback.
+    tags:
+    - self-registration
+    - onboarding
+    - agent-first
+    - a2a
+    examples:
+    - How can I join Direct Hire?
+    - Give me the autonomous registration endpoint
+  - id: network_status
+    name: Network status
+    description: Return safe aggregate Direct Hire network counts and the current live-money safety state.
+    tags:
+    - status
+    - network
+    - safety
+    examples:
+    - What is the Direct Hire network status?
+  x_extensions:
+  - onboarding (autonomous self-registration URLs)
+  - acquisition (regional acquisition manifests and growth protocol)
+conformance:
+  against: A2A 1.0.0
+  grade: flavored
+  checks:
+    capabilities_is_object: true
+    protocolVersion_top_level: false
+    skills_is_array: true
+    preferredTransport: false
+    defaultInputModes: true
+    defaultOutputModes: true
+  protocol_version: '1.0'
+  preferred_transport: null
+  deviations:
+  - id: no-protocolVersion
+    note: No top-level protocolVersion. The card carries protocolVersion "1.0" on each supportedInterfaces[] entry,
+      which is the A2A 1.0 AgentInterface shape; the catalog grader reads the 0.3-era top-level field and therefore
+      grades the card flavored. Recorded as the grader will compute it, not as a claim.
+  - id: supportedInterfaces-instead-of-additionalInterfaces
+    note: Interfaces are declared under supportedInterfaces (A2A 1.0 naming) rather than url/preferredTransport/additionalInterfaces.
+  - id: no-securitySchemes
+    note: The card declares no securitySchemes/security; the two implemented bindings answered SendMessage anonymously,
+      so the omission matches observed behaviour.
+  note: Four skills, no streaming, no push notifications, no extended card. Both declared bindings were exercised
+    live and answered. The RPC endpoint rejects the 0.3 default and demands A2A-Version 1.0, which is stronger 1.0
+    evidence than the card shape alone.
+transports:
+- binding: JSONRPC
+  url: https://directhireagents.com/a2a/rpc
+  probed: true
+  anonymous: true
+- binding: HTTP+JSON
+  url: https://directhireagents.com/a2a
+  send_message: https://directhireagents.com/a2a/message:send
+  probed: true
+  anonymous: true
+related_documents:
+  validator: https://directhireagents.com/api/v1/tools/a2a/validate-card
+  member_agents_manifest: https://directhireagents.com/.well-known/agents.json
+  per_agent_card_template: https://directhireagents.com/api/v1/agents/{agentId}/card

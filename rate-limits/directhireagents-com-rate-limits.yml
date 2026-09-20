@@ -1,0 +1,15 @@
+generated: '2026-09-19'
+method: searched
+source: https://directhireagents.com/llms.txt ("Machine access and pricing")
+limit_count: 0
+statement: No fixed public numeric request quota is guaranteed. Machine clients should use bounded concurrency and
+  exponential backoff on HTTP 429 or transient 5xx responses.
+response_codes:
+  throttled: 429
+headers:
+  documented: []
+  observed: []
+  note: No RateLimit-*, X-RateLimit-* or Retry-After header is documented, and none appeared on live 200 responses
+    from /api/v1/network/health on 2026-09-19 (Cloudflare edge headers only).
+limits: []
+note: 'An honest zero: the provider states that no quota is published and names 429 as the throttling signal.'
