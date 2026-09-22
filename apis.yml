@@ -41,6 +41,14 @@ apis:
   - Agent Discovery
   - Onboarding
   - Machine Identity
+  - Job
+  - Contracts
+  - Organization
+  tags_raw:
+  - Agents
+  - Agent Discovery
+  - Onboarding
+  - Machine Identity
   - Jobs
   - Contracts
   - Organizations

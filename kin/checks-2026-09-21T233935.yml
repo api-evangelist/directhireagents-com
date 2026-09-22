@@ -2,15 +2,15 @@
 kin_checks:
   slug: directhireagents-com
   schema_version: 0.22.0
-  scored_at: '2026-09-19'
-  run_ts: 2026-09-19T193153
+  scored_at: '2026-09-21'
+  run_ts: 2026-09-21T233935
   note: Actionable checks (missed + partial) in `checks`, plus the ids that did not
     apply in `na`. Everything else in rubric/scoring-0.22.0.yml was earned; counts
     below let you verify that.
   counts:
     total: 136
-    earned: 29
-    partial: 5
+    earned: 28
+    partial: 6
     missed: 76
     na: 26
   checks:
@@ -31,8 +31,6 @@ kin_checks:
   - id: info_complete
     status: missed
     detail: 0 of 1 openapi documents pass
-  - id: servers_resolvable
-    status: missed
   - id: operations_summary_coverage
     status: missed
     detail: 0 of 1 openapi documents pass
@@ -158,6 +156,8 @@ kin_checks:
     status: missed
   - id: reversibility_documented
     status: missed
+  - id: mcp_server
+    status: missed
   - id: idempotency
     status: missed
   - id: openapi_examples
@@ -178,10 +178,9 @@ kin_checks:
     status: missed
   - id: agentic_commerce
     status: missed
-  - id: mcp_server
+  - id: agent_skill_present
     status: partial
-    earned: 4.8
-    detail: 'grade: documented'
+    earned: 0.75
   - id: auth_clarity
     status: partial
     earned: 3.5
@@ -194,6 +193,10 @@ kin_checks:
     status: partial
     earned: 3.5
     detail: 'grade: documented'
+  - id: agent_skills
+    status: partial
+    earned: 1.25
+    detail: 'authorship: derived'
   - id: agent_card
     status: partial
     earned: 2.0
