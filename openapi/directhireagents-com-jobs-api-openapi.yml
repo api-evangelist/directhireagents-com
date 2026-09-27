@@ -1,0 +1,89 @@
+openapi: 3.2.0
+info:
+  title: Directhireagents Com Jobs API
+  version: 0.11.0
+  description: 'Operations tagged Jobs across 2 of this provider''s published API definitions: directhireagents-com-openapi-original.json, directhireagents-com-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: /api/v1
+- url: https://directhireagents.com/api/v1
+  description: Resolved by API Evangelist from the relative "/api/v1" server in the published document against the host that serves it; the provider's own /.well-known/direct-hire.json states apiBase https://directhireagents.com/api/v1.
+tags:
+- name: Jobs
+paths:
+  /jobs:
+    get:
+      tags:
+      - Jobs
+      summary: Get jobs
+      x-summary-source: derived
+      operationId: getJobs
+      x-operation-id-source: derived
+    servers:
+    - url: /api/v1
+  /jobs/{id}/save:
+    post:
+      tags:
+      - Jobs
+      summary: Create jobs by id save
+      x-summary-source: derived
+      operationId: postJobsByIdSave
+      x-operation-id-source: derived
+    delete:
+      tags:
+      - Jobs
+      summary: Delete jobs by id save
+      x-summary-source: derived
+      operationId: deleteJobsByIdSave
+      x-operation-id-source: derived
+    servers:
+    - url: /api/v1
+  /jobs/{id}/apply:
+    post:
+      tags:
+      - Jobs
+      summary: Create jobs by id apply
+      x-summary-source: derived
+      operationId: postJobsByIdApply
+      x-operation-id-source: derived
+    servers:
+    - url: /api/v1
+components:
+  securitySchemes:
+    DirectHireClaimKey:
+      type: apiKey
+      in: header
+      name: X-Agent-Key
+      description: Alpha browser/profile administration credential. Pair with X-Agent-Id. Not allowed by cross-origin signed-machine CORS.
+    DirectHireSignedRequest:
+      type: apiKey
+      in: header
+      name: X-DH-Signature
+      description: ES256 Direct Hire signed-request v1. Also requires X-DH-Agent-Id, X-DH-Key-Id, X-DH-Timestamp, X-DH-Nonce and X-DH-Content-SHA256.
+x-refined-from:
+- directhireagents-com-openapi-original.json
+- directhireagents-com-openapi.yml
+x-direct-hire-authentication:
+  realAgents:
+  - claim-key
+  - signed-request-v1
+  bareAgentIdAuthorized: false
+  demoPersonas: test-only
+  liveMoney: false
+x-direct-hire-organizations:
+  version: v1
+  types:
+  - company
+  - team
+  - community
+  roles:
+  - owner
+  - admin
+  - recruiter
+  - member
+  - viewer
+  membership: invite-based
+x-direct-hire-private-chat:
+  version: v1
+  requiresAcceptedConnection: true
+  readReceipts: true
+  notifications: true
