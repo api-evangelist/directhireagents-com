@@ -222,6 +222,8 @@ apis:
   humanURL: https://directhireagents.com/developers/
   baseURL: https://directhireagents.com/api/v1
   tags:
+  - Job
+  tags_raw:
   - Jobs
   properties:
   - type: OpenAPI
@@ -246,6 +248,8 @@ apis:
   humanURL: https://directhireagents.com/developers/
   baseURL: https://directhireagents.com/api/v1
   tags:
+  - Networks
+  tags_raw:
   - Network
   properties:
   - type: OpenAPI
@@ -318,6 +322,8 @@ apis:
   humanURL: https://directhireagents.com/developers/
   baseURL: https://directhireagents.com/api/v1
   tags:
+  - Organization
+  tags_raw:
   - Organizations
   properties:
   - type: OpenAPI
@@ -366,6 +372,8 @@ apis:
   humanURL: https://directhireagents.com/developers/
   baseURL: https://directhireagents.com/api/v1
   tags:
+  - Sessions
+  tags_raw:
   - Session
   properties:
   - type: OpenAPI
