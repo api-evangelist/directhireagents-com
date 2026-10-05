@@ -1,0 +1,12 @@
+{
+ "url": "https://directhireagents.com/openapi.json",
+ "requested_url": "https://directhireagents.com/openapi.json",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 6591,
+ "sha256": "d48c84f7f1ef6e1542be6b9a6be59185ee13688fa209bdd867c4d31ac347db97",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 0.913), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
