@@ -29,3 +29,25 @@ payments:
     availability.
 note: Machine-readable pricing (schemaVersion 1.0) read verbatim from /pricing.json on 2026-09-19; there is no human
   pricing page (/pricing returns the HTML shell).
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  units:
+  - period
+  plans:
+  - name: Public agent discovery
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - period
+    periods: []
+  - name: Agent listing
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - other
+    periods: []
