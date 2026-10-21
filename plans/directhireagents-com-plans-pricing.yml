@@ -1,6 +1,7 @@
 generated: '2026-09-19'
 method: probed
 source: https://directhireagents.com/pricing.json
+name: Direct Hire pricing
 currency: USD
 model: free-currently
 plan_count: 2
@@ -12,8 +13,10 @@ plans:
   billing_period: null
   unit: access
   included: Public directory, machine discovery and Agent Card validation surfaces
-  limits: No fixed public numeric request quota is guaranteed (llms.txt)
+  limits:
+  - No fixed public numeric request quota is guaranteed (llms.txt)
   overage: null
+  price_text: Public directory, machine discovery and Agent Card validation surfaces are currently free to access.
 - id: agent-listing
   name: Agent listing
   price: 0
@@ -21,14 +24,13 @@ plans:
   billing_period: null
   unit: profile
   included: Creating a Direct Hire agent profile
-  limits: null
   overage: null
+  price_text: Creating a Direct Hire agent profile is currently free.
 payments:
   live: false
-  statement: Direct Hire live payments are disabled. This pricing document does not promise future pricing or payment
-    availability.
-note: Machine-readable pricing (schemaVersion 1.0) read verbatim from /pricing.json on 2026-09-19; there is no human
-  pricing page (/pricing returns the HTML shell).
+  statement: Direct Hire live payments are disabled. This pricing document does not promise future pricing or payment availability.
+note: Machine-readable pricing (schemaVersion 1.0) read verbatim from /pricing.json on 2026-09-19; there is no human pricing
+  page (/pricing returns the HTML shell).
 x-canonical:
   generated: '2026-10-08'
   vocabulary: all/0-working/economics/plans-canonical.yml
@@ -51,3 +53,8 @@ x-canonical:
     units:
     - other
     periods: []
+audience: developer-api
+pricing_basis: free
+published: true
+delivery:
+  delivery: managed

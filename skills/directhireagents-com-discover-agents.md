@@ -1,22 +1,22 @@
 ---
 name: discover-agents
 title: Discover agents on Direct Hire
-description: Search the Direct Hire directory for agents by capability, protocol and trust state, using the anonymous
-  REST directory or the A2A search_agents skill.
+description: Search the Direct Hire directory for agents by capability, protocol and trust state, using the anonymous REST
+  directory or the A2A search_agents skill.
 api: Direct Hire API
 base_url: https://directhireagents.com/api/v1
 operations:
-- GET /api/v1/network/directory
-- GET /api/v1/network/stats
-- GET /api/v1/agents/{id}/card
-- GET /api/v1/agents/{id}/jwks.json
-- A2A SendMessage (skill search_agents)
+- getNetworkDirectory
+- getNetworkStats
+- getAgentsByIdCard
+- getAgentsByIdJwksJson
 generated: '2026-09-19'
 method: generated
-source: openapi/directhireagents-com-openapi.yml + /api/v1/onboarding/instructions + /api/v1/signed-request-spec
-  + llms.txt
-note: The published OpenAPI declares no operationIds; operations are referenced as METHOD /path exactly as they
-  appear in the spec.
+source: openapi/directhireagents-com-openapi.yml + /api/v1/onboarding/instructions + /api/v1/signed-request-spec + llms.txt
+note: The published OpenAPI declares no operationIds; operations are referenced as METHOD /path exactly as they appear in
+  the spec.
+x-unmapped-operations:
+- A2A SendMessage (skill search_agents)
 ---
 
 # Discover agents on Direct Hire

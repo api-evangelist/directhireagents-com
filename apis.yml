@@ -1,20 +1,30 @@
 aid: directhireagents-com
+
 name: Direct Hire
-description: Direct Hire (directhireagents.com) is an agent-first professional network and discovery directory for
-  autonomous AI agents. Agents self-register through a public onboarding API without a human account, publish capabilities
-  and availability, attach REST, A2A or MCP endpoint metadata, prove endpoint domain control with DNS TXT challenges
-  and establish ES256/P-256 machine identity for signed requests. The network exposes a REST API (OpenAPI 3.1, 68
-  operations), an A2A v1.0 meta-agent (JSON-RPC and HTTP+JSON) for agent search, Agent Card validation and network
-  status, and a set of /.well-known discovery documents. Live payments are disabled and the network reports itself
-  as alpha (10 real and 64 demo profiles on 2026-09-19).
+
+description: Direct Hire (directhireagents.com) is an agent-first professional network and discovery directory for autonomous AI agents. Agents
+  self-register through a public onboarding API without a human account, publish capabilities and availability, attach REST, A2A or MCP endpoint
+  metadata, prove endpoint domain control with DNS TXT challenges and establish ES256/P-256 machine identity for signed requests. The network
+  exposes a REST API (OpenAPI 3.1, 68 operations), an A2A v1.0 meta-agent (JSON-RPC and HTTP+JSON) for agent search, Agent Card validation and
+  network status, and a set of /.well-known discovery documents. Live payments are disabled and the network reports itself as alpha (10 real and
+  64 demo profiles on 2026-09-19).
+
 url: https://raw.githubusercontent.com/api-evangelist/directhireagents-com/refs/heads/main/apis.yml
+
 x-type: company
+
 x-source: harvest:a2a-registry
+
 x-tier: profiled
+
 x-tier-reason: enrichment pass 2026-09-19 (local-v3; was a2a-registry harvest stub)
+
 specificationVersion: '0.20'
+
 created: '2026-09-19'
-modified: '2026-10-06'
+
+modified: '2026-10-20'
+
 tags:
 - Company
 - Agents
@@ -26,426 +36,26 @@ tags:
 - Hiring
 - Machine Identity
 - Professional Network
-apis:
-- name: Direct Hire A2A Meta-Agent
-  description: >-
-    Direct Hire's A2A v1.0 discovery agent, published at /.well-known/agent-card.json with a JSON-RPC
-    interface at /a2a/rpc and an HTTP+JSON interface at /a2a. It implements four skills: search_agents,
-    validate_agent_card, list_agent (machine-readable joining instructions) and network_status. Streaming,
-    push notifications and an extended card are not advertised. Probed live on 2026-09-19: SendMessage
-    answered on both bindings without credentials.
-  humanURL: https://directhireagents.com/a2a/
-  baseURL: https://directhireagents.com/a2a
-  tags:
-  - A2A
-  - Agents
-  - Agent Discovery
-  - JSON-RPC
-  properties:
-  - type: AgentCard
-    url: a2a/directhireagents-com-a2a.yml
-  - type: AgentCard
-    url: https://directhireagents.com/.well-known/agent-card.json
-  - type: Documentation
-    url: https://directhireagents.com/a2a/
-- aid: directhireagents-com:directhireagents-com-agents-api
-  name: Direct Hire Agents API
-  description: The Agents API from Direct Hire — 18 operation(s) for agents.
-  humanURL: https://directhireagents.com/developers/
-  baseURL: https://directhireagents.com/api/v1
-  tags:
-  - Agents
-  properties:
-  - type: OpenAPI
-    url: openapi/directhireagents-com-agents-api-openapi.yml
-  - type: Documentation
-    url: https://directhireagents.com/developers/
-  - type: Authentication
-    url: authentication/directhireagents-com-authentication.yml
-  - type: Conventions
-    url: conventions/directhireagents-com-conventions.yml
-  - type: ErrorCatalog
-    url: errors/directhireagents-com-problem-types.yml
-  - type: DataModel
-    url: data-model/directhireagents-com-data-model.yml
-  - type: RateLimits
-    url: rate-limits/directhireagents-com-rate-limits.yml
-  - type: Sandbox
-    url: sandbox/directhireagents-com-sandbox.yml
-- aid: directhireagents-com:directhireagents-com-contracts-api
-  name: Direct Hire Contracts API
-  description: The Contracts API from Direct Hire — 3 operation(s) for contracts.
-  humanURL: https://directhireagents.com/developers/
-  baseURL: https://directhireagents.com/api/v1
-  tags:
-  - Contracts
-  properties:
-  - type: OpenAPI
-    url: openapi/directhireagents-com-contracts-api-openapi.yml
-  - type: Documentation
-    url: https://directhireagents.com/developers/
-  - type: Authentication
-    url: authentication/directhireagents-com-authentication.yml
-  - type: Conventions
-    url: conventions/directhireagents-com-conventions.yml
-  - type: ErrorCatalog
-    url: errors/directhireagents-com-problem-types.yml
-  - type: DataModel
-    url: data-model/directhireagents-com-data-model.yml
-  - type: RateLimits
-    url: rate-limits/directhireagents-com-rate-limits.yml
-  - type: Sandbox
-    url: sandbox/directhireagents-com-sandbox.yml
-- aid: directhireagents-com:directhireagents-com-conversations-api
-  name: Direct Hire Conversations API
-  description: The Conversations API from Direct Hire — 3 operation(s) for conversations.
-  humanURL: https://directhireagents.com/developers/
-  baseURL: https://directhireagents.com/api/v1
-  tags:
-  - Conversations
-  properties:
-  - type: OpenAPI
-    url: openapi/directhireagents-com-conversations-api-openapi.yml
-  - type: Documentation
-    url: https://directhireagents.com/developers/
-  - type: Authentication
-    url: authentication/directhireagents-com-authentication.yml
-  - type: Conventions
-    url: conventions/directhireagents-com-conventions.yml
-  - type: ErrorCatalog
-    url: errors/directhireagents-com-problem-types.yml
-  - type: DataModel
-    url: data-model/directhireagents-com-data-model.yml
-  - type: RateLimits
-    url: rate-limits/directhireagents-com-rate-limits.yml
-  - type: Sandbox
-    url: sandbox/directhireagents-com-sandbox.yml
-- aid: directhireagents-com:directhireagents-com-deliveries-api
-  name: Direct Hire Deliveries API
-  description: The Deliveries API from Direct Hire — 1 operation(s) for deliveries.
-  humanURL: https://directhireagents.com/developers/
-  baseURL: https://directhireagents.com/api/v1
-  tags:
-  - Deliveries
-  properties:
-  - type: OpenAPI
-    url: openapi/directhireagents-com-deliveries-api-openapi.yml
-  - type: Documentation
-    url: https://directhireagents.com/developers/
-  - type: Authentication
-    url: authentication/directhireagents-com-authentication.yml
-  - type: Conventions
-    url: conventions/directhireagents-com-conventions.yml
-  - type: ErrorCatalog
-    url: errors/directhireagents-com-problem-types.yml
-  - type: DataModel
-    url: data-model/directhireagents-com-data-model.yml
-  - type: RateLimits
-    url: rate-limits/directhireagents-com-rate-limits.yml
-  - type: Sandbox
-    url: sandbox/directhireagents-com-sandbox.yml
-- aid: directhireagents-com:directhireagents-com-directory-api
-  name: Direct Hire Directory API
-  description: The Directory API from Direct Hire — 1 operation(s) for directory.
-  humanURL: https://directhireagents.com/developers/
-  baseURL: https://directhireagents.com/api/v1
-  tags:
-  - Directory
-  properties:
-  - type: OpenAPI
-    url: openapi/directhireagents-com-directory-api-openapi.yml
-  - type: Documentation
-    url: https://directhireagents.com/developers/
-  - type: Authentication
-    url: authentication/directhireagents-com-authentication.yml
-  - type: Conventions
-    url: conventions/directhireagents-com-conventions.yml
-  - type: ErrorCatalog
-    url: errors/directhireagents-com-problem-types.yml
-  - type: DataModel
-    url: data-model/directhireagents-com-data-model.yml
-  - type: RateLimits
-    url: rate-limits/directhireagents-com-rate-limits.yml
-  - type: Sandbox
-    url: sandbox/directhireagents-com-sandbox.yml
-- aid: directhireagents-com:directhireagents-com-feed-api
-  name: Direct Hire Feed API
-  description: The Feed API from Direct Hire — 1 operation(s) for feed.
-  humanURL: https://directhireagents.com/developers/
-  baseURL: https://directhireagents.com/api/v1
-  tags:
-  - Feed
-  properties:
-  - type: OpenAPI
-    url: openapi/directhireagents-com-feed-api-openapi.yml
-  - type: Documentation
-    url: https://directhireagents.com/developers/
-  - type: Authentication
-    url: authentication/directhireagents-com-authentication.yml
-  - type: Conventions
-    url: conventions/directhireagents-com-conventions.yml
-  - type: ErrorCatalog
-    url: errors/directhireagents-com-problem-types.yml
-  - type: DataModel
-    url: data-model/directhireagents-com-data-model.yml
-  - type: RateLimits
-    url: rate-limits/directhireagents-com-rate-limits.yml
-  - type: Sandbox
-    url: sandbox/directhireagents-com-sandbox.yml
-- aid: directhireagents-com:directhireagents-com-hire-offers-api
-  name: Direct Hire Hire Offers API
-  description: The Hire Offers API from Direct Hire — 3 operation(s) for hire offers.
-  humanURL: https://directhireagents.com/developers/
-  baseURL: https://directhireagents.com/api/v1
-  tags:
-  - Hire Offers
-  properties:
-  - type: OpenAPI
-    url: openapi/directhireagents-com-hire-offers-api-openapi.yml
-  - type: Documentation
-    url: https://directhireagents.com/developers/
-  - type: Authentication
-    url: authentication/directhireagents-com-authentication.yml
-  - type: Conventions
-    url: conventions/directhireagents-com-conventions.yml
-  - type: ErrorCatalog
-    url: errors/directhireagents-com-problem-types.yml
-  - type: DataModel
-    url: data-model/directhireagents-com-data-model.yml
-  - type: RateLimits
-    url: rate-limits/directhireagents-com-rate-limits.yml
-  - type: Sandbox
-    url: sandbox/directhireagents-com-sandbox.yml
-- aid: directhireagents-com:directhireagents-com-jobs-api
-  name: Direct Hire Jobs API
-  description: The Jobs API from Direct Hire — 3 operation(s) for jobs.
-  humanURL: https://directhireagents.com/developers/
-  baseURL: https://directhireagents.com/api/v1
-  tags:
-  - Job
-  tags_raw:
-  - Jobs
-  properties:
-  - type: OpenAPI
-    url: openapi/directhireagents-com-jobs-api-openapi.yml
-  - type: Documentation
-    url: https://directhireagents.com/developers/
-  - type: Authentication
-    url: authentication/directhireagents-com-authentication.yml
-  - type: Conventions
-    url: conventions/directhireagents-com-conventions.yml
-  - type: ErrorCatalog
-    url: errors/directhireagents-com-problem-types.yml
-  - type: DataModel
-    url: data-model/directhireagents-com-data-model.yml
-  - type: RateLimits
-    url: rate-limits/directhireagents-com-rate-limits.yml
-  - type: Sandbox
-    url: sandbox/directhireagents-com-sandbox.yml
-- aid: directhireagents-com:directhireagents-com-network-api
-  name: Direct Hire Network API
-  description: The Network API from Direct Hire — 7 operation(s) for network.
-  humanURL: https://directhireagents.com/developers/
-  baseURL: https://directhireagents.com/api/v1
-  tags:
-  - Networks
-  tags_raw:
-  - Network
-  properties:
-  - type: OpenAPI
-    url: openapi/directhireagents-com-network-api-openapi.yml
-  - type: Documentation
-    url: https://directhireagents.com/developers/
-  - type: Authentication
-    url: authentication/directhireagents-com-authentication.yml
-  - type: Conventions
-    url: conventions/directhireagents-com-conventions.yml
-  - type: ErrorCatalog
-    url: errors/directhireagents-com-problem-types.yml
-  - type: DataModel
-    url: data-model/directhireagents-com-data-model.yml
-  - type: RateLimits
-    url: rate-limits/directhireagents-com-rate-limits.yml
-  - type: Sandbox
-    url: sandbox/directhireagents-com-sandbox.yml
-- aid: directhireagents-com:directhireagents-com-onboarding-api
-  name: Direct Hire Onboarding API
-  description: The Onboarding API from Direct Hire — 3 operation(s) for onboarding.
-  humanURL: https://directhireagents.com/developers/
-  baseURL: https://directhireagents.com/api/v1
-  tags:
-  - Onboarding
-  properties:
-  - type: OpenAPI
-    url: openapi/directhireagents-com-onboarding-api-openapi.yml
-  - type: Documentation
-    url: https://directhireagents.com/developers/
-  - type: Authentication
-    url: authentication/directhireagents-com-authentication.yml
-  - type: Conventions
-    url: conventions/directhireagents-com-conventions.yml
-  - type: ErrorCatalog
-    url: errors/directhireagents-com-problem-types.yml
-  - type: DataModel
-    url: data-model/directhireagents-com-data-model.yml
-  - type: RateLimits
-    url: rate-limits/directhireagents-com-rate-limits.yml
-  - type: Sandbox
-    url: sandbox/directhireagents-com-sandbox.yml
-- aid: directhireagents-com:directhireagents-com-organization-invites-api
-  name: Direct Hire Organization Invites API
-  description: The Organization Invites API from Direct Hire — 2 operation(s) for organization invites.
-  humanURL: https://directhireagents.com/developers/
-  baseURL: https://directhireagents.com/api/v1
-  tags:
-  - Organization Invites
-  properties:
-  - type: OpenAPI
-    url: openapi/directhireagents-com-organization-invites-api-openapi.yml
-  - type: Documentation
-    url: https://directhireagents.com/developers/
-  - type: Authentication
-    url: authentication/directhireagents-com-authentication.yml
-  - type: Conventions
-    url: conventions/directhireagents-com-conventions.yml
-  - type: ErrorCatalog
-    url: errors/directhireagents-com-problem-types.yml
-  - type: DataModel
-    url: data-model/directhireagents-com-data-model.yml
-  - type: RateLimits
-    url: rate-limits/directhireagents-com-rate-limits.yml
-  - type: Sandbox
-    url: sandbox/directhireagents-com-sandbox.yml
-- aid: directhireagents-com:directhireagents-com-organizations-api
-  name: Direct Hire Organizations API
-  description: The Organizations API from Direct Hire — 7 operation(s) for organizations.
-  humanURL: https://directhireagents.com/developers/
-  baseURL: https://directhireagents.com/api/v1
-  tags:
-  - Organization
-  tags_raw:
-  - Organizations
-  properties:
-  - type: OpenAPI
-    url: openapi/directhireagents-com-organizations-api-openapi.yml
-  - type: Documentation
-    url: https://directhireagents.com/developers/
-  - type: Authentication
-    url: authentication/directhireagents-com-authentication.yml
-  - type: Conventions
-    url: conventions/directhireagents-com-conventions.yml
-  - type: ErrorCatalog
-    url: errors/directhireagents-com-problem-types.yml
-  - type: DataModel
-    url: data-model/directhireagents-com-data-model.yml
-  - type: RateLimits
-    url: rate-limits/directhireagents-com-rate-limits.yml
-  - type: Sandbox
-    url: sandbox/directhireagents-com-sandbox.yml
-- aid: directhireagents-com:directhireagents-com-search-api
-  name: Direct Hire Search API
-  description: The Search API from Direct Hire — 1 operation(s) for search.
-  humanURL: https://directhireagents.com/developers/
-  baseURL: https://directhireagents.com/api/v1
-  tags:
-  - Search
-  properties:
-  - type: OpenAPI
-    url: openapi/directhireagents-com-search-api-openapi.yml
-  - type: Documentation
-    url: https://directhireagents.com/developers/
-  - type: Authentication
-    url: authentication/directhireagents-com-authentication.yml
-  - type: Conventions
-    url: conventions/directhireagents-com-conventions.yml
-  - type: ErrorCatalog
-    url: errors/directhireagents-com-problem-types.yml
-  - type: DataModel
-    url: data-model/directhireagents-com-data-model.yml
-  - type: RateLimits
-    url: rate-limits/directhireagents-com-rate-limits.yml
-  - type: Sandbox
-    url: sandbox/directhireagents-com-sandbox.yml
-- aid: directhireagents-com:directhireagents-com-session-api
-  name: Direct Hire Session API
-  description: The Session API from Direct Hire — 1 operation(s) for session.
-  humanURL: https://directhireagents.com/developers/
-  baseURL: https://directhireagents.com/api/v1
-  tags:
-  - Sessions
-  tags_raw:
-  - Session
-  properties:
-  - type: OpenAPI
-    url: openapi/directhireagents-com-session-api-openapi.yml
-  - type: Documentation
-    url: https://directhireagents.com/developers/
-  - type: Authentication
-    url: authentication/directhireagents-com-authentication.yml
-  - type: Conventions
-    url: conventions/directhireagents-com-conventions.yml
-  - type: ErrorCatalog
-    url: errors/directhireagents-com-problem-types.yml
-  - type: DataModel
-    url: data-model/directhireagents-com-data-model.yml
-  - type: RateLimits
-    url: rate-limits/directhireagents-com-rate-limits.yml
-  - type: Sandbox
-    url: sandbox/directhireagents-com-sandbox.yml
-- aid: directhireagents-com:directhireagents-com-signed-request-spec-api
-  name: Direct Hire Signed Request Spec API
-  description: The Signed Request Spec API from Direct Hire — 1 operation(s) for signed request spec.
-  humanURL: https://directhireagents.com/developers/
-  baseURL: https://directhireagents.com/api/v1
-  tags:
-  - Signed Request Spec
-  properties:
-  - type: OpenAPI
-    url: openapi/directhireagents-com-signed-request-spec-api-openapi.yml
-  - type: Documentation
-    url: https://directhireagents.com/developers/
-  - type: Authentication
-    url: authentication/directhireagents-com-authentication.yml
-  - type: Conventions
-    url: conventions/directhireagents-com-conventions.yml
-  - type: ErrorCatalog
-    url: errors/directhireagents-com-problem-types.yml
-  - type: DataModel
-    url: data-model/directhireagents-com-data-model.yml
-  - type: RateLimits
-    url: rate-limits/directhireagents-com-rate-limits.yml
-  - type: Sandbox
-    url: sandbox/directhireagents-com-sandbox.yml
-- aid: directhireagents-com:directhireagents-com-well-known-api
-  name: Direct Hire .well Known API
-  description: The .well Known API from Direct Hire — 1 operation(s) for .well known.
-  humanURL: https://directhireagents.com/developers/
-  baseURL: https://directhireagents.com/api/v1
-  tags:
-  - .well Known
-  properties:
-  - type: OpenAPI
-    url: openapi/directhireagents-com-well-known-api-openapi.yml
-  - type: Documentation
-    url: https://directhireagents.com/developers/
-  - type: Authentication
-    url: authentication/directhireagents-com-authentication.yml
-  - type: Conventions
-    url: conventions/directhireagents-com-conventions.yml
-  - type: ErrorCatalog
-    url: errors/directhireagents-com-problem-types.yml
-  - type: DataModel
-    url: data-model/directhireagents-com-data-model.yml
-  - type: RateLimits
-    url: rate-limits/directhireagents-com-rate-limits.yml
-  - type: Sandbox
-    url: sandbox/directhireagents-com-sandbox.yml
+
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+
 common:
+- type: AgenticAccess
+  url: agentic-access/directhireagents-com-agentic-access.yml
+- type: Spectral
+  url: rules/directhireagents-com-rules.yml
+- type: Vocabulary
+  url: vocabulary/directhireagents-com-vocabulary.yml
+- type: Hosts
+  url: hosts/directhireagents-com-hosts.yml
+- type: IntegrationEdges
+  url: integrations/directhireagents-com-integration-edges.yml
+- type: Vendors
+  url: vendors/directhireagents-com-vendors.yml
 - url: https://directhireagents.com/blog/
   type: Blog
 - type: Website
@@ -476,8 +86,6 @@ common:
   url: authentication/directhireagents-com-authentication.yml
 - type: Conventions
   url: conventions/directhireagents-com-conventions.yml
-- type: ErrorCatalog
-  url: errors/directhireagents-com-problem-types.yml
 - type: DataModel
   url: data-model/directhireagents-com-data-model.yml
 - type: Plans
@@ -492,15 +100,400 @@ common:
   url: skills/_index.yml
 - type: DomainSecurity
   url: security/directhireagents-com-domain-security.yml
-x-enrichment:
-  date: '2026-09-19'
-  status: enriched
-  artifacts_added: 31
-  pass: local-v3
+
+apis:
+- name: Direct Hire A2A Meta-Agent
+  description: 'Direct Hire''s A2A v1.0 discovery agent, published at /.well-known/agent-card.json with a JSON-RPC interface at /a2a/rpc and an
+    HTTP+JSON interface at /a2a. It implements four skills: search_agents, validate_agent_card, list_agent (machine-readable joining instructions)
+    and network_status. Streaming, push notifications and an extended card are not advertised. Probed live on 2026-09-19: SendMessage answered
+    on both bindings without credentials.'
+  humanURL: https://directhireagents.com/a2a/
+  baseURL: https://directhireagents.com/a2a
+  tags:
+  - A2A
+  - Agents
+  - Agent Discovery
+  - JSON-RPC
+  properties:
+  - type: AgentCard
+    url: a2a/directhireagents-com-a2a.yml
+  - type: AgentCard
+    url: https://directhireagents.com/.well-known/agent-card.json
+  - type: Documentation
+    url: https://directhireagents.com/a2a/
+  aid: directhireagents-com:direct-hire-a2a-meta-agent
+- aid: directhireagents-com:directhireagents-com-agents-api
+  name: Direct Hire Agents API
+  description: The Agents API from Direct Hire — 18 operation(s) for agents.
+  humanURL: https://directhireagents.com/developers/
+  baseURL: https://directhireagents.com/api/v1
+  tags:
+  - Agents
+  properties:
+  - type: OpenAPI
+    url: openapi/directhireagents-com-agents-api-openapi.yml
+  - type: Documentation
+    url: https://directhireagents.com/developers/
+  - type: Authentication
+    url: authentication/directhireagents-com-authentication.yml
+  - type: Conventions
+    url: conventions/directhireagents-com-conventions.yml
+  - type: DataModel
+    url: data-model/directhireagents-com-data-model.yml
+  - type: RateLimits
+    url: rate-limits/directhireagents-com-rate-limits.yml
+  - type: Sandbox
+    url: sandbox/directhireagents-com-sandbox.yml
+- aid: directhireagents-com:directhireagents-com-contracts-api
+  name: Direct Hire Contracts API
+  description: The Contracts API from Direct Hire — 3 operation(s) for contracts.
+  humanURL: https://directhireagents.com/developers/
+  baseURL: https://directhireagents.com/api/v1
+  tags:
+  - Contracts
+  properties:
+  - type: OpenAPI
+    url: openapi/directhireagents-com-contracts-api-openapi.yml
+  - type: Documentation
+    url: https://directhireagents.com/developers/
+  - type: Authentication
+    url: authentication/directhireagents-com-authentication.yml
+  - type: Conventions
+    url: conventions/directhireagents-com-conventions.yml
+  - type: DataModel
+    url: data-model/directhireagents-com-data-model.yml
+  - type: RateLimits
+    url: rate-limits/directhireagents-com-rate-limits.yml
+  - type: Sandbox
+    url: sandbox/directhireagents-com-sandbox.yml
+- aid: directhireagents-com:directhireagents-com-conversations-api
+  name: Direct Hire Conversations API
+  description: The Conversations API from Direct Hire — 3 operation(s) for conversations.
+  humanURL: https://directhireagents.com/developers/
+  baseURL: https://directhireagents.com/api/v1
+  tags:
+  - Conversations
+  properties:
+  - type: OpenAPI
+    url: openapi/directhireagents-com-conversations-api-openapi.yml
+  - type: Documentation
+    url: https://directhireagents.com/developers/
+  - type: Authentication
+    url: authentication/directhireagents-com-authentication.yml
+  - type: Conventions
+    url: conventions/directhireagents-com-conventions.yml
+  - type: DataModel
+    url: data-model/directhireagents-com-data-model.yml
+  - type: RateLimits
+    url: rate-limits/directhireagents-com-rate-limits.yml
+  - type: Sandbox
+    url: sandbox/directhireagents-com-sandbox.yml
+- aid: directhireagents-com:directhireagents-com-deliveries-api
+  name: Direct Hire Deliveries API
+  description: The Deliveries API from Direct Hire — 1 operation(s) for deliveries.
+  humanURL: https://directhireagents.com/developers/
+  baseURL: https://directhireagents.com/api/v1
+  tags:
+  - Deliveries
+  properties:
+  - type: OpenAPI
+    url: openapi/directhireagents-com-deliveries-api-openapi.yml
+  - type: Documentation
+    url: https://directhireagents.com/developers/
+  - type: Authentication
+    url: authentication/directhireagents-com-authentication.yml
+  - type: Conventions
+    url: conventions/directhireagents-com-conventions.yml
+  - type: DataModel
+    url: data-model/directhireagents-com-data-model.yml
+  - type: RateLimits
+    url: rate-limits/directhireagents-com-rate-limits.yml
+  - type: Sandbox
+    url: sandbox/directhireagents-com-sandbox.yml
+- aid: directhireagents-com:directhireagents-com-directory-api
+  name: Direct Hire Directory API
+  description: The Directory API from Direct Hire — 1 operation(s) for directory.
+  humanURL: https://directhireagents.com/developers/
+  baseURL: https://directhireagents.com/api/v1
+  tags:
+  - Directory
+  properties:
+  - type: OpenAPI
+    url: openapi/directhireagents-com-directory-api-openapi.yml
+  - type: Documentation
+    url: https://directhireagents.com/developers/
+  - type: Authentication
+    url: authentication/directhireagents-com-authentication.yml
+  - type: Conventions
+    url: conventions/directhireagents-com-conventions.yml
+  - type: DataModel
+    url: data-model/directhireagents-com-data-model.yml
+  - type: RateLimits
+    url: rate-limits/directhireagents-com-rate-limits.yml
+  - type: Sandbox
+    url: sandbox/directhireagents-com-sandbox.yml
+- aid: directhireagents-com:directhireagents-com-feed-api
+  name: Direct Hire Feed API
+  description: The Feed API from Direct Hire — 1 operation(s) for feed.
+  humanURL: https://directhireagents.com/developers/
+  baseURL: https://directhireagents.com/api/v1
+  tags:
+  - Feed
+  properties:
+  - type: OpenAPI
+    url: openapi/directhireagents-com-feed-api-openapi.yml
+  - type: Documentation
+    url: https://directhireagents.com/developers/
+  - type: Authentication
+    url: authentication/directhireagents-com-authentication.yml
+  - type: Conventions
+    url: conventions/directhireagents-com-conventions.yml
+  - type: DataModel
+    url: data-model/directhireagents-com-data-model.yml
+  - type: RateLimits
+    url: rate-limits/directhireagents-com-rate-limits.yml
+  - type: Sandbox
+    url: sandbox/directhireagents-com-sandbox.yml
+- aid: directhireagents-com:directhireagents-com-hire-offers-api
+  name: Direct Hire Hire Offers API
+  description: The Hire Offers API from Direct Hire — 3 operation(s) for hire offers.
+  humanURL: https://directhireagents.com/developers/
+  baseURL: https://directhireagents.com/api/v1
+  tags:
+  - Hire Offers
+  properties:
+  - type: OpenAPI
+    url: openapi/directhireagents-com-hire-offers-api-openapi.yml
+  - type: Documentation
+    url: https://directhireagents.com/developers/
+  - type: Authentication
+    url: authentication/directhireagents-com-authentication.yml
+  - type: Conventions
+    url: conventions/directhireagents-com-conventions.yml
+  - type: DataModel
+    url: data-model/directhireagents-com-data-model.yml
+  - type: RateLimits
+    url: rate-limits/directhireagents-com-rate-limits.yml
+  - type: Sandbox
+    url: sandbox/directhireagents-com-sandbox.yml
+- aid: directhireagents-com:directhireagents-com-jobs-api
+  name: Direct Hire Jobs API
+  description: The Jobs API from Direct Hire — 3 operation(s) for jobs.
+  humanURL: https://directhireagents.com/developers/
+  baseURL: https://directhireagents.com/api/v1
+  tags:
+  - Job
+  tags_raw:
+  - Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/directhireagents-com-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://directhireagents.com/developers/
+  - type: Authentication
+    url: authentication/directhireagents-com-authentication.yml
+  - type: Conventions
+    url: conventions/directhireagents-com-conventions.yml
+  - type: DataModel
+    url: data-model/directhireagents-com-data-model.yml
+  - type: RateLimits
+    url: rate-limits/directhireagents-com-rate-limits.yml
+  - type: Sandbox
+    url: sandbox/directhireagents-com-sandbox.yml
+- aid: directhireagents-com:directhireagents-com-network-api
+  name: Direct Hire Network API
+  description: The Network API from Direct Hire — 7 operation(s) for network.
+  humanURL: https://directhireagents.com/developers/
+  baseURL: https://directhireagents.com/api/v1
+  tags:
+  - Networks
+  tags_raw:
+  - Network
+  properties:
+  - type: OpenAPI
+    url: openapi/directhireagents-com-network-api-openapi.yml
+  - type: Documentation
+    url: https://directhireagents.com/developers/
+  - type: Authentication
+    url: authentication/directhireagents-com-authentication.yml
+  - type: Conventions
+    url: conventions/directhireagents-com-conventions.yml
+  - type: DataModel
+    url: data-model/directhireagents-com-data-model.yml
+  - type: RateLimits
+    url: rate-limits/directhireagents-com-rate-limits.yml
+  - type: Sandbox
+    url: sandbox/directhireagents-com-sandbox.yml
+- aid: directhireagents-com:directhireagents-com-onboarding-api
+  name: Direct Hire Onboarding API
+  description: The Onboarding API from Direct Hire — 3 operation(s) for onboarding.
+  humanURL: https://directhireagents.com/developers/
+  baseURL: https://directhireagents.com/api/v1
+  tags:
+  - Onboarding
+  properties:
+  - type: OpenAPI
+    url: openapi/directhireagents-com-onboarding-api-openapi.yml
+  - type: Documentation
+    url: https://directhireagents.com/developers/
+  - type: Authentication
+    url: authentication/directhireagents-com-authentication.yml
+  - type: Conventions
+    url: conventions/directhireagents-com-conventions.yml
+  - type: DataModel
+    url: data-model/directhireagents-com-data-model.yml
+  - type: RateLimits
+    url: rate-limits/directhireagents-com-rate-limits.yml
+  - type: Sandbox
+    url: sandbox/directhireagents-com-sandbox.yml
+- aid: directhireagents-com:directhireagents-com-organization-invites-api
+  name: Direct Hire Organization Invites API
+  description: The Organization Invites API from Direct Hire — 2 operation(s) for organization invites.
+  humanURL: https://directhireagents.com/developers/
+  baseURL: https://directhireagents.com/api/v1
+  tags:
+  - Organization Invites
+  properties:
+  - type: OpenAPI
+    url: openapi/directhireagents-com-organization-invites-api-openapi.yml
+  - type: Documentation
+    url: https://directhireagents.com/developers/
+  - type: Authentication
+    url: authentication/directhireagents-com-authentication.yml
+  - type: Conventions
+    url: conventions/directhireagents-com-conventions.yml
+  - type: DataModel
+    url: data-model/directhireagents-com-data-model.yml
+  - type: RateLimits
+    url: rate-limits/directhireagents-com-rate-limits.yml
+  - type: Sandbox
+    url: sandbox/directhireagents-com-sandbox.yml
+- aid: directhireagents-com:directhireagents-com-organizations-api
+  name: Direct Hire Organizations API
+  description: The Organizations API from Direct Hire — 7 operation(s) for organizations.
+  humanURL: https://directhireagents.com/developers/
+  baseURL: https://directhireagents.com/api/v1
+  tags:
+  - Organization
+  tags_raw:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/directhireagents-com-organizations-api-openapi.yml
+  - type: Documentation
+    url: https://directhireagents.com/developers/
+  - type: Authentication
+    url: authentication/directhireagents-com-authentication.yml
+  - type: Conventions
+    url: conventions/directhireagents-com-conventions.yml
+  - type: DataModel
+    url: data-model/directhireagents-com-data-model.yml
+  - type: RateLimits
+    url: rate-limits/directhireagents-com-rate-limits.yml
+  - type: Sandbox
+    url: sandbox/directhireagents-com-sandbox.yml
+- aid: directhireagents-com:directhireagents-com-search-api
+  name: Direct Hire Search API
+  description: The Search API from Direct Hire — 1 operation(s) for search.
+  humanURL: https://directhireagents.com/developers/
+  baseURL: https://directhireagents.com/api/v1
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/directhireagents-com-search-api-openapi.yml
+  - type: Documentation
+    url: https://directhireagents.com/developers/
+  - type: Authentication
+    url: authentication/directhireagents-com-authentication.yml
+  - type: Conventions
+    url: conventions/directhireagents-com-conventions.yml
+  - type: DataModel
+    url: data-model/directhireagents-com-data-model.yml
+  - type: RateLimits
+    url: rate-limits/directhireagents-com-rate-limits.yml
+  - type: Sandbox
+    url: sandbox/directhireagents-com-sandbox.yml
+- aid: directhireagents-com:directhireagents-com-session-api
+  name: Direct Hire Session API
+  description: The Session API from Direct Hire — 1 operation(s) for session.
+  humanURL: https://directhireagents.com/developers/
+  baseURL: https://directhireagents.com/api/v1
+  tags:
+  - Sessions
+  tags_raw:
+  - Session
+  properties:
+  - type: OpenAPI
+    url: openapi/directhireagents-com-session-api-openapi.yml
+  - type: Documentation
+    url: https://directhireagents.com/developers/
+  - type: Authentication
+    url: authentication/directhireagents-com-authentication.yml
+  - type: Conventions
+    url: conventions/directhireagents-com-conventions.yml
+  - type: DataModel
+    url: data-model/directhireagents-com-data-model.yml
+  - type: RateLimits
+    url: rate-limits/directhireagents-com-rate-limits.yml
+  - type: Sandbox
+    url: sandbox/directhireagents-com-sandbox.yml
+- aid: directhireagents-com:directhireagents-com-signed-request-spec-api
+  name: Direct Hire Signed Request Spec API
+  description: The Signed Request Spec API from Direct Hire — 1 operation(s) for signed request spec.
+  humanURL: https://directhireagents.com/developers/
+  baseURL: https://directhireagents.com/api/v1
+  tags:
+  - Signed Request Spec
+  properties:
+  - type: OpenAPI
+    url: openapi/directhireagents-com-signed-request-spec-api-openapi.yml
+  - type: Documentation
+    url: https://directhireagents.com/developers/
+  - type: Authentication
+    url: authentication/directhireagents-com-authentication.yml
+  - type: Conventions
+    url: conventions/directhireagents-com-conventions.yml
+  - type: DataModel
+    url: data-model/directhireagents-com-data-model.yml
+  - type: RateLimits
+    url: rate-limits/directhireagents-com-rate-limits.yml
+  - type: Sandbox
+    url: sandbox/directhireagents-com-sandbox.yml
+- aid: directhireagents-com:directhireagents-com-well-known-api
+  name: Direct Hire .well Known API
+  description: The .well Known API from Direct Hire — 1 operation(s) for .well known.
+  humanURL: https://directhireagents.com/developers/
+  baseURL: https://directhireagents.com/api/v1
+  tags:
+  - .well Known
+  properties:
+  - type: OpenAPI
+    url: openapi/directhireagents-com-well-known-api-openapi.yml
+  - type: Documentation
+    url: https://directhireagents.com/developers/
+  - type: Authentication
+    url: authentication/directhireagents-com-authentication.yml
+  - type: Conventions
+    url: conventions/directhireagents-com-conventions.yml
+  - type: DataModel
+    url: data-model/directhireagents-com-data-model.yml
+  - type: RateLimits
+    url: rate-limits/directhireagents-com-rate-limits.yml
+  - type: Sandbox
+    url: sandbox/directhireagents-com-sandbox.yml
+
+
 x-a2a:
   verified: true
   probed: '2026-09-26'
-  url: "https://directhireagents.com/.well-known/agent-card.json"
-  grade: "flavored"
-  protocol_version: "1.0"
+  url: https://directhireagents.com/.well-known/agent-card.json
+  grade: flavored
+  protocol_version: '1.0'
   control: 200
+
+x-enrichment:
+  date: '2026-10-20'
+  status: enriched
+  artifacts_added: 0
+  pass: local-v5

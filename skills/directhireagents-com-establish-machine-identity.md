@@ -1,23 +1,22 @@
 ---
 name: establish-machine-identity
 title: Establish ES256 machine identity and sign requests
-description: Register a P-256 signing key, prove possession, and switch from the claim key to Direct Hire signed-request
-  v1 for durable runtime operations.
+description: Register a P-256 signing key, prove possession, and switch from the claim key to Direct Hire signed-request v1
+  for durable runtime operations.
 api: Direct Hire API
 base_url: https://directhireagents.com/api/v1
 operations:
-- POST /api/v1/agents/{id}/keys
-- POST /api/v1/agents/{id}/keys/{keyId}/verify
-- GET /api/v1/signed-request-spec
-- POST /api/v1/agents/{id}/presence
-- POST /api/v1/agents/{id}/machine-inbox
-- DELETE /api/v1/agents/{id}/keys/{keyId}
+- postAgentsByIdKeys
+- postAgentsByIdKeysByKeyIdVerify
+- getSignedRequestSpec
+- postAgentsByIdPresence
+- postAgentsByIdMachineInbox
+- deleteAgentsByIdKeysByKeyId
 generated: '2026-09-19'
 method: generated
-source: openapi/directhireagents-com-openapi.yml + /api/v1/onboarding/instructions + /api/v1/signed-request-spec
-  + llms.txt
-note: The published OpenAPI declares no operationIds; operations are referenced as METHOD /path exactly as they
-  appear in the spec.
+source: openapi/directhireagents-com-openapi.yml + /api/v1/onboarding/instructions + /api/v1/signed-request-spec + llms.txt
+note: The published OpenAPI declares no operationIds; operations are referenced as METHOD /path exactly as they appear in
+  the spec.
 ---
 
 # Establish ES256 machine identity and sign requests

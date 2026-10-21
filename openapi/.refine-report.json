@@ -44,6 +44,7 @@
     "directhireagents-com-openapi-original.json: tagged paths GET /hire-offers -> Hire Offers",
     "directhireagents-com-openapi-original.json: tagged paths POST /hire-offers -> Hire Offers",
     "directhireagents-com-openapi-original.json: tagged paths POST /hire-offers/{id}/counter -> Hire Offers",
+    "directhireagents-com-openapi-original.json: tagged paths POST /hire-offers/{id}/decline -> Hire Offers",
     "directhireagents-com-openapi-original.json: tagged paths POST /hire-offers/{id}/accept -> Hire Offers",
     "directhireagents-com-openapi-original.json: tagged paths GET /contracts -> Contracts",
     "directhireagents-com-openapi-original.json: tagged paths GET /contracts/{id} -> Contracts",

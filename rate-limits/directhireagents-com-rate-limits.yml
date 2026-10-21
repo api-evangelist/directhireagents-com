@@ -1,6 +1,7 @@
 generated: '2026-09-19'
 method: searched
 source: https://directhireagents.com/llms.txt ("Machine access and pricing")
+name: Direct Hire API Rate Limits
 limit_count: 0
 statement: No fixed public numeric request quota is guaranteed. Machine clients should use bounded concurrency and
   exponential backoff on HTTP 429 or transient 5xx responses.

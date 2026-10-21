@@ -1,3 +1,25 @@
+generated: '2026-10-20'
+method: searched
+source:
+- https://a2aregistry.org/api/agents
+- https://zapier.com/apps/directhireagents-com/integrations
+- https://zapier.com/apps/directhireagents/integrations
+- https://zapier.com/apps/direct-hire/integrations
+- https://n8n.io/integrations/directhireagents-com/
+- https://n8n.io/integrations/directhireagents/
+- https://composio.dev/toolkits/directhireagents-com
+- https://monid.ai/tools/directhireagents-com
+checked:
+- https://a2aregistry.org/api/agents
+- https://composio.dev/toolkits/directhireagents-com
+- https://monid.ai/tools/directhireagents-com
+- https://n8n.io/integrations/directhireagents-com/
+- https://n8n.io/integrations/directhireagents/
+- https://zapier.com/apps/direct-hire/integrations
+- https://zapier.com/apps/directhireagents-com/integrations
+- https://zapier.com/apps/directhireagents/integrations
+summary: null
+marketplace_apps: []
 edges:
 - partner_name: A2A protocol (own Agent Card)
   partner: null
@@ -68,9 +90,4 @@ edges:
     detected: '2026-10-19'
   detected_by: sweep-ai-agents.py
   first_seen: '2026-10-15'
-generated: '2026-10-15'
-method: searched
-source:
-- https://a2aregistry.org/api/agents
-checked:
-- https://a2aregistry.org/api/agents
+templates: []

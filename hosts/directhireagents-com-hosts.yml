@@ -1,0 +1,48 @@
+generated: '2026-10-20'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 2
+  own: 2
+  other_domain: 0
+  platform: 0
+  roles:
+  - api
+  - website
+hosts:
+- host: api.directhireagents.com
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: directhireagents.com
+  role: api
+  relation: own
+- host: directhireagents.com
+  found_by:
+  - pointer
+  - apis[]
+  - probed
+  - docs-index
+  - spec-found
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - Blog
+  - Website
+  - Documentation
+  - GettingStarted
+  - SignUp
+  - Pricing
+  - LLMsTxt
+  serves:
+  - api
+  - docs
+  - spec
+  - cdn
+  vendor: cloudflare
+  registrable_domain: directhireagents.com
+  role: website
+  relation: own

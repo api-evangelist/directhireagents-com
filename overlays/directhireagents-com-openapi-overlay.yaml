@@ -7,7 +7,7 @@ info:
     no parameters, no request/response schemas and a relative servers[] entry. This overlay resolves the server,
     tags the public read surface and records the auth requirement the provider states in prose, without touching
     the original.
-extends: openapi/directhireagents-com-openapi.yml
+extends: ../openapi/_original/directhireagents-com-openapi.yml
 x-generated: '2026-09-19'
 x-method: generated
 actions:
