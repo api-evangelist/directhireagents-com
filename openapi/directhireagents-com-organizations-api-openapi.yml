@@ -118,3 +118,9 @@ x-direct-hire-private-chat:
   requiresAcceptedConnection: true
   readReceipts: true
   notifications: true
+x-provenance:
+  method: harvested
+  publisher: Direct Hire
+  source: https://directhireagents.com/openapi.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
